@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Painel pessoal para organizar receitas, despesas e metas financeiras.">
+  <title>Painel Financeiro | Controle Total</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <p class="eyebrow">SEU ESPAÇO FINANCEIRO</p>
+    <h1 id="titulo">CONTROLE TOTAL</h1>
+    <p class="subtitulo">Um olhar simples sobre o seu dinheiro.</p>
+  </header>
+
+  <main>
+    <section class="resumo" aria-label="Resumo financeiro do mês">
+      <label class="mes" for="mes">MÊS DE REFERÊNCIA
+        <input id="mes" type="month">
+      </label>
+      <article class="kpi">
+        <small>Receitas</small>
+        <b id="kReceitas">R$ 0,00</b>
+      </article>
+      <article class="kpi">
+        <small>Despesas</small>
+        <b id="kDespesas">R$ 0,00</b>
+      </article>
+      <article class="kpi">
+        <small>Saldo</small>
+        <b id="kSaldo">R$ 0,00</b>
+      </article>
+      <article class="kpi">
+        <small>Taxa guardada</small>
+        <b id="kTaxa">0,0%</b>
+      </article>
+    </section>
+
+    <section class="painel" aria-labelledby="formTitulo">
+      <h2 id="formTitulo">NOVO LANÇAMENTO</h2>
+      <p class="nota">Registre suas receitas e despesas para acompanhar seu mês.</p>
+      <div class="form">
+        <label for="tipo">Tipo
+          <select id="tipo">
+            <option value="despesa">Despesa</option>
+            <option value="receita">Receita</option>
+          </select>
+        </label>
+        <label for="categoria">Categoria
+          <select id="categoria"></select>
+        </label>
+        <label for="valor">Valor (R$)
+          <input id="valor" type="text" inputmode="decimal" placeholder="Ex.: 45,90">
+        </label>
+        <label for="data">Data
+          <input id="data" type="date">
+        </label>
+        <label class="campo-descricao" for="desc">Descrição
+          <input id="desc" type="text" maxlength="120" placeholder="Opcional">
+        </label>
+        <button id="add" type="button">ADICIONAR LANÇAMENTO</button>
+      </div>
+      <p id="erro" class="erro" role="alert" aria-live="polite"></p>
+    </section>
+
+    <section class="painel" aria-labelledby="lancTitulo">
+      <div class="cabecalho-painel">
+        <div>
+          <h2 id="lancTitulo">LANÇAMENTOS</h2>
+          <p class="nota">Movimentações do mês selecionado.</p>
+        </div>
+        <button id="csv" class="botao-secundario" type="button">EXPORTAR CSV</button>
+      </div>
+      <div class="tabela-scroll">
+        <table id="tabela">
+          <thead>
+            <tr><th>Data</th><th>Tipo</th><th>Categoria</th><th>Descrição</th><th class="n">Valor</th><th><span class="sr-only">Ações</span></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="painel" aria-labelledby="categoriasTitulo">
+      <h2 id="categoriasTitulo">DESPESAS POR CATEGORIA</h2>
+      <div id="cats" class="categorias"></div>
+    </section>
+
+    <section class="painel" aria-labelledby="regraTitulo">
+      <h2 id="regraTitulo">REGRA 50 / 30 / 20</h2>
+      <p class="nota">Distribuição sugerida da renda entre necessidades, desejos e poupança.</p>
+      <div class="tabela-scroll">
+        <table id="regra">
+          <thead><tr><th>Grupo</th><th class="n">Limite sugerido</th><th class="n">Realizado</th><th class="n">Da renda</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="duas-colunas">
+      <section class="painel" aria-labelledby="reservaTitulo">
+        <h2 id="reservaTitulo">META DE RESERVA</h2>
+        <p class="nota">Calcule uma reserva de emergência com base nas despesas mensais.</p>
+        <div class="form form-curto">
+          <label for="alvo">Meses de reserva
+            <input id="alvo" type="number" min="1" max="120" value="6">
+          </label>
+          <label for="reserva">Reserva atual (R$)
+            <input id="reserva" type="text" inputmode="decimal" placeholder="Ex.: 2500,00" value="0">
+          </label>
+        </div>
+        <p id="resReserva" class="resultado" aria-live="polite"></p>
+      </section>
+
+      <section class="painel" aria-labelledby="jurosTitulo">
+        <h2 id="jurosTitulo">SIMULADOR DE JUROS</h2>
+        <p class="nota">Simulação de aportes mensais com juros compostos.</p>
+        <div class="form form-curto">
+          <label for="aporte">Aporte mensal (R$)
+            <input id="aporte" type="text" inputmode="decimal" placeholder="Ex.: 300,00" value="300,00">
+          </label>
+          <label for="taxa">Taxa mensal (%)
+            <input id="taxa" type="number" min="0" step="0.01" value="0.8">
+          </label>
+          <label for="meses">Período (meses)
+            <input id="meses" type="number" min="1" max="1200" value="12">
+          </label>
+        </div>
+        <p id="resJuros" class="resultado" aria-live="polite"></p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="rodape">SEUS DADOS FICAM SALVOS NESTE DISPOSITIVO</footer>
+  <script src="app.js"></script>
+</body>
+</html>

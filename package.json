@@ -1,0 +1,16 @@
+{
+  "name": "controle-financeiro-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aplicativo Android offline para controle financeiro pessoal",
+  "scripts": {
+    "build:web": "node build-web.mjs",
+    "android:sync": "npm run build:web && cap sync android",
+    "android:apk": "npm run android:sync && node build-apk.mjs"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3"
+  }
+}
