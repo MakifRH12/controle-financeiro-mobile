@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080808">
-  <meta name="description" content="Painel pessoal para organizar receitas, despesas e metas financeiras.">
-  <title>Painel Financeiro | Controle Total</title>
+  <meta name="description" content="Organize receitas, despesas e metas financeiras em um painel simples e privado.">
+  <title>Controle Financeiro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,13 +14,13 @@
 <body>
   <header class="topo">
     <p class="eyebrow">SEU ESPAÇO FINANCEIRO</p>
-    <h1 id="titulo">CONTROLE TOTAL</h1>
-    <p class="subtitulo">Um olhar simples sobre o seu dinheiro.</p>
+    <h1 id="titulo">Controle financeiro</h1>
+    <p class="subtitulo">Mais clareza para cuidar bem do seu dinheiro.</p>
   </header>
 
   <main>
     <section class="resumo" aria-label="Resumo financeiro do mês">
-      <label class="mes" for="mes">MÊS DE REFERÊNCIA
+      <label class="mes" for="mes">Mês de referência
         <input id="mes" type="month">
       </label>
       <article class="kpi">
@@ -42,7 +42,7 @@
     </section>
 
     <section class="painel" aria-labelledby="formTitulo">
-      <h2 id="formTitulo">NOVO LANÇAMENTO</h2>
+      <h2 id="formTitulo">Novo lançamento</h2>
       <p class="nota">Registre suas receitas e despesas para acompanhar seu mês.</p>
       <div class="form">
         <label for="tipo">Tipo
@@ -63,7 +63,7 @@
         <label class="campo-descricao" for="desc">Descrição
           <input id="desc" type="text" maxlength="120" placeholder="Opcional">
         </label>
-        <button id="add" type="button">ADICIONAR LANÇAMENTO</button>
+        <button id="add" type="button">Adicionar lançamento</button>
       </div>
       <p id="erro" class="erro" role="alert" aria-live="polite"></p>
     </section>
@@ -71,10 +71,10 @@
     <section class="painel" aria-labelledby="lancTitulo">
       <div class="cabecalho-painel">
         <div>
-          <h2 id="lancTitulo">LANÇAMENTOS</h2>
+          <h2 id="lancTitulo">Lançamentos</h2>
           <p class="nota">Movimentações do mês selecionado.</p>
         </div>
-        <button id="csv" class="botao-secundario" type="button">EXPORTAR CSV</button>
+        <button id="csv" class="botao-secundario" type="button">Exportar CSV</button>
       </div>
       <div class="tabela-scroll">
         <table id="tabela">
@@ -87,12 +87,12 @@
     </section>
 
     <section class="painel" aria-labelledby="categoriasTitulo">
-      <h2 id="categoriasTitulo">DESPESAS POR CATEGORIA</h2>
+      <h2 id="categoriasTitulo">Despesas por categoria</h2>
       <div id="cats" class="categorias"></div>
     </section>
 
     <section class="painel" aria-labelledby="regraTitulo">
-      <h2 id="regraTitulo">REGRA 50 / 30 / 20</h2>
+      <h2 id="regraTitulo">Regra 50 / 30 / 20</h2>
       <p class="nota">Distribuição sugerida da renda entre necessidades, desejos e poupança.</p>
       <div class="tabela-scroll">
         <table id="regra">
@@ -104,7 +104,7 @@
 
     <section class="duas-colunas">
       <section class="painel" aria-labelledby="reservaTitulo">
-        <h2 id="reservaTitulo">META DE RESERVA</h2>
+        <h2 id="reservaTitulo">Meta da reserva</h2>
         <p class="nota">Calcule uma reserva de emergência com base nas despesas mensais.</p>
         <div class="form form-curto">
           <label for="alvo">Meses de reserva
@@ -118,7 +118,7 @@
       </section>
 
       <section class="painel" aria-labelledby="jurosTitulo">
-        <h2 id="jurosTitulo">SIMULADOR DE JUROS</h2>
+        <h2 id="jurosTitulo">Simulador de juros compostos</h2>
         <p class="nota">Simulação de aportes mensais com juros compostos.</p>
         <div class="form form-curto">
           <label for="aporte">Aporte mensal (R$)
@@ -136,7 +136,7 @@
     </section>
   </main>
 
-  <footer class="rodape">SEUS DADOS FICAM SALVOS NESTE DISPOSITIVO</footer>
+  <footer class="rodape">Seus dados ficam salvos neste dispositivo.</footer>
   <script src="app.js"></script>
 </body>
 </html>

@@ -1,51 +1,63 @@
 # Controle Financeiro
 
-Aplicativo Android para acompanhar receitas, despesas e metas financeiras pessoais. Os lançamentos são mantidos localmente no dispositivo, sem conta ou sincronização em nuvem.
+Aplicativo Android para organizar as finanças do dia a dia com clareza e privacidade. Acompanhe receitas, despesas e metas em um painel simples, sem criar conta.
 
-## Recursos
+> **Privacidade em primeiro lugar:** os lançamentos ficam armazenados localmente no dispositivo e não são enviados a um servidor pelo aplicativo.
 
-- Resumo mensal de receitas, despesas, saldo e taxa guardada.
-- Cadastro e exclusão de lançamentos por categoria.
-- Exportação dos lançamentos para CSV.
-- Visão de despesas por categoria e acompanhamento da regra 50/30/20.
-- Cálculo de meta para reserva de emergência.
-- Simulador de aportes com juros compostos.
+## O que você pode fazer
 
-## Privacidade
+- Acompanhar receitas, despesas, saldo e taxa guardada no mês.
+- Registrar e remover movimentações por categoria.
+- Visualizar despesas por categoria e acompanhar a regra 50 / 30 / 20.
+- Planejar uma reserva de emergência.
+- Simular aportes mensais com juros compostos.
+- Exportar os lançamentos para um arquivo CSV.
 
-Os lançamentos são armazenados no `localStorage` do navegador ou WebView e não são enviados a um servidor pelo aplicativo. Não há login, sincronização entre dispositivos nem recuperação em nuvem; desinstalar o app ou limpar os dados do navegador pode apagar os lançamentos. A interface carrega a fonte Manrope pelo Google Fonts quando há conexão com a internet.
+## Tecnologias
+
+- HTML, CSS e JavaScript.
+- Capacitor 7 para empacotar o aplicativo Android.
+- Gradle para compilar o APK de teste.
 
 ## Requisitos
 
 - Node.js e npm.
 - Android Studio com Android SDK Platform 35 e Build Tools 35.0.0.
-- JDK 21 (o Android Studio inclui uma versão compatível).
+- JDK 21, disponível junto com o Android Studio.
 
-## Compilar o APK de teste
+## Executar e compilar
 
-Na raiz do projeto, execute:
+Instale as dependências e gere o APK de depuração:
 
 ```bash
 npm install
 npm run android:apk
 ```
 
-O comando prepara os arquivos web, sincroniza o projeto Capacitor e compila o APK de depuração em:
+O APK será criado em `android/app/build/outputs/apk/debug/app-debug.apk`.
 
-```text
-android/app/build/outputs/apk/debug/app-debug.apk
+Para preparar somente os arquivos da interface web:
+
+```bash
+npm run build:web
 ```
 
-O APK de depuração usa uma chave de assinatura de desenvolvimento. É adequado para testes, mas não para publicação na Play Store. Para distribuir o app pela Play Store, configure uma chave de release própria e siga o processo oficial de publicação.
+O APK gerado é destinado a testes e usa assinatura de desenvolvimento. Para uma publicação na Play Store, configure uma chave de assinatura de release própria.
 
-## Estrutura do projeto
+## Privacidade e armazenamento
 
-| Caminho | Descrição |
+Os dados são salvos no `localStorage` do navegador ou WebView. Não há login, sincronização entre dispositivos ou cópia de segurança em nuvem; limpar os dados do navegador ou desinstalar o aplicativo pode apagar os lançamentos. A fonte Manrope é carregada pelo Google Fonts quando há conexão com a internet.
+
+## Organização do projeto
+
+| Arquivo ou pasta | Para que serve |
 | --- | --- |
-| `index.html`, `style.css`, `app.js` | Interface e lógica do aplicativo |
+| `index.html` | Estrutura da interface |
+| `style.css` | Estilos e layout responsivo |
+| `app.js` | Lógica financeira e interações |
 | `build-web.mjs` | Prepara os arquivos web em `www/` |
 | `capacitor.config.json` | Configuração do Capacitor |
 | `android/` | Projeto nativo Android |
-| `build-apk.mjs` | Executa a compilação Android de depuração |
+| `build-apk.mjs` | Inicia a compilação do APK |
 
-Os diretórios gerados (`node_modules/`, `www/` e saídas de compilação) não precisam ser versionados; os scripts os recriam a partir dos arquivos-fonte.
+Pastas geradas como `node_modules/`, `www/` e os resultados de compilação Android são recriadas pelos scripts e ficam fora do controle de versão.

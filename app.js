@@ -32,47 +32,6 @@ const dataLocal = data => {
   return `${ano}-${mes}-${dia}`;
 };
 
-// ---------- Título com entrada suave das letras ----------
-const frases = ["CONTROLE TOTAL", "SEU DINHEIRO EM ORDEM", "CADA CENTAVO CONTA", "FUTURO FINANCEIRO"];
-
-function mostrarFrase(elemento, frase) {
-  elemento.setAttribute("aria-label", frase);
-  let indice = 0;
-  const textoPalavras = frase.split(" ");
-  const palavras = textoPalavras.map(palavra => {
-    const grupo = document.createElement("span");
-    grupo.className = "palavra";
-    grupo.setAttribute("aria-hidden", "true");
-
-    for (const letra of palavra) {
-      const span = document.createElement("span");
-      span.className = "letra";
-      span.textContent = letra;
-      span.style.animationDelay = `${indice * 24}ms`;
-      grupo.append(span);
-      indice++;
-    }
-
-    return grupo;
-  });
-  const conteudo = palavras.flatMap((palavra, palavraIndice) =>
-    palavraIndice ? [document.createTextNode(" "), palavra] : [palavra]
-  );
-  elemento.replaceChildren(...conteudo);
-}
-
-async function loopTitulo() {
-  const elemento = $("#titulo");
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  let indice = 0;
-  while (true) {
-    await new Promise(resolver => setTimeout(resolver, 3600));
-    indice = (indice + 1) % frases.length;
-    mostrarFrase(elemento, frases[indice]);
-  }
-}
-
 // ---------- Formulário ----------
 function preencherCategorias() {
   const categorias = $("#tipo").value === "receita" ? RECEITAS : Object.values(GRUPOS).flat();
@@ -228,4 +187,3 @@ $("#data").value = dataLocal(hoje);
 $("#mes").value = dataLocal(hoje).slice(0, 7);
 preencherCategorias();
 render();
-loopTitulo();
